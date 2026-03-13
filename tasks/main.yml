@@ -1,9 +1,9 @@
 ---
-- name: Check that OS is Ubuntu
+- name: Check that OS is Ubuntu or Debian
   ansible.builtin.assert:
     that:
-      - ansible_distribution == "Ubuntu"
-    fail_msg: "This role supports only Ubuntu"
+      - ansible_distribution in ["Ubuntu", "Debian"]
+    fail_msg: "This role supports only Ubuntu or Debian"
   tags: ["bootstrap"]
 
 # Include other tasks
