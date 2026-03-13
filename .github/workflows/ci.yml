@@ -1,0 +1,33 @@
+---
+name: Lint Ansible Role
+
+on:
+  push:
+    # Trigger the workflow on any tag that starts with "v", e.g., v1.0.0
+    tags:
+      - 'v*'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Install Ansible and ansible-lint
+      - name: Install Ansible and Lint
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible-core ansible-lint
+
+      # Run linting on the role to catch errors and warnings
+      - name: Lint Role
+        run: ansible-lint .

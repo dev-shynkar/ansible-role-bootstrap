@@ -1,0 +1,20 @@
+---
+- name: Check that OS is Ubuntu
+  ansible.builtin.assert:
+    that:
+      - ansible_distribution == "Ubuntu"
+    fail_msg: "This role supports only Ubuntu"
+  tags: ["bootstrap"]
+
+# Include other tasks
+- name: Import package tasks
+  ansible.builtin.import_tasks: packages.yml
+  tags: ["bootstrap"]
+
+- name: Import timezone tasks
+  ansible.builtin.import_tasks: timezone.yml
+  tags: ["bootstrap"]
+
+- name: Import hostname tasks
+  ansible.builtin.import_tasks: hostname.yml
+  tags: ["bootstrap"]

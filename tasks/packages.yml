@@ -1,0 +1,21 @@
+---
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+  tags: ["bootstrap"]
+
+- name: Upgrade all packages
+  ansible.builtin.apt:
+    upgrade: dist
+  tags: ["bootstrap"]
+
+- name: Autoremove unused packages
+  ansible.builtin.apt:
+    autoremove: true
+  tags: ["bootstrap"]
+
+- name: Clean apt cache
+  ansible.builtin.apt:
+    autoclean: true
+  tags: ["bootstrap"]

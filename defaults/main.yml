@@ -1,0 +1,6 @@
+---
+# Timezone
+timezone: "Europe/Kyiv"
+
+# Hostname
+bootstrap_hostname: ""

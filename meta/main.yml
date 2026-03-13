@@ -1,0 +1,12 @@
+galaxy_info:
+  role_name: bootstrap
+  author: "aadmin"
+  description: "Bootstrap role for Ubuntu servers: packages, timezone"
+  license: MIT
+  min_ansible_version: "2.13"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+dependencies: []
